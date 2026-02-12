@@ -193,76 +193,6 @@ function toHistoryPayload(items) {
     .map((item) => ({ role: item.role, content: String(item.content) }));
 }
 
-function enhanceNumberSteppers() {
-  const numberInputs = document.querySelectorAll(".unit-input input[type='number']");
-
-  numberInputs.forEach((input) => {
-    const wrapper = input.closest(".unit-input");
-    if (!wrapper || wrapper.querySelector(".stepper-controls")) {
-      return;
-    }
-
-    const controls = document.createElement("div");
-    controls.className = "stepper-controls";
-
-    const minusBtn = document.createElement("button");
-    minusBtn.type = "button";
-    minusBtn.className = "stepper-btn";
-    minusBtn.setAttribute("aria-label", "减少");
-    minusBtn.textContent = "−";
-
-    const plusBtn = document.createElement("button");
-    plusBtn.type = "button";
-    plusBtn.className = "stepper-btn";
-    plusBtn.setAttribute("aria-label", "增加");
-    plusBtn.textContent = "+";
-
-    const stepInput = (delta) => {
-      if (typeof input.stepUp === "function" && typeof input.stepDown === "function") {
-        if (delta > 0) input.stepUp(1);
-        if (delta < 0) input.stepDown(1);
-      } else {
-        const current = Number(input.value || 0);
-        input.value = String(current + delta);
-      }
-      input.dispatchEvent(new Event("input", { bubbles: true }));
-      input.dispatchEvent(new Event("change", { bubbles: true }));
-      input.focus();
-    };
-
-    minusBtn.addEventListener("click", () => stepInput(-1));
-    plusBtn.addEventListener("click", () => stepInput(1));
-
-    controls.append(minusBtn, plusBtn);
-
-    const unitTag = wrapper.querySelector("span");
-    if (unitTag) {
-      wrapper.insertBefore(controls, unitTag);
-    } else {
-      wrapper.appendChild(controls);
-    }
-  });
-}
-
-function getText(formData, key) {
-  return String(formData.get(key) || "").trim();
-}
-
-function composeBaziText(formData, prefix, personLabel) {
-  const calendar = getText(formData, `${prefix}Calendar`);
-  const year = getText(formData, `${prefix}Year`);
-  const month = getText(formData, `${prefix}Month`);
-  const day = getText(formData, `${prefix}Day`);
-  const hour = getText(formData, `${prefix}Hour`);
-
-  let text = `${personLabel}：${calendar}${year}年${month}月${day}日`;
-  if (hour) {
-    text += ` ${hour}`;
-  }
-
-  return text;
-}
-
 async function requestAnalyzeStream(payload, handlers = {}) {
   const response = await fetch("/api/analyze-stream", {
     method: "POST",
@@ -403,15 +333,11 @@ form.addEventListener("submit", async (event) => {
   if (isRequesting) return;
 
   const formData = new FormData(form);
-  const selfGender = String(formData.get("selfGender") || "").trim();
-  const selfBazi = composeBaziText(formData, "self", "本人");
-  const fatherBazi = composeBaziText(formData, "father", "父亲");
-  const motherBazi = composeBaziText(formData, "mother", "母亲");
   const payloadBase = {
     nickname: String(formData.get("nickname") || "").trim(),
-    selfBazi: `${selfBazi}，性别：${selfGender || "未知"}`,
-    fatherBazi,
-    motherBazi,
+    selfBazi: String(formData.get("selfBazi") || "").trim(),
+    fatherBazi: String(formData.get("fatherBazi") || "").trim(),
+    motherBazi: String(formData.get("motherBazi") || "").trim(),
     siblings: String(formData.get("siblings") || "").trim(),
     maritalStatus: String(formData.get("maritalStatus") || "").trim(),
     note: String(formData.get("note") || "").trim()
@@ -472,4 +398,3 @@ followupForm.addEventListener("submit", async (event) => {
 });
 
 updateFollowupState();
-enhanceNumberSteppers();

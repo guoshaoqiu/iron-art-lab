@@ -28,175 +28,41 @@
               <input id="nickname" name="nickname" type="text" maxlength="100" required />
             </label>
 
-            <fieldset class="bazi-card">
-              <legend>本人八字信息</legend>
-              <div class="bazi-grid">
-                <label class="mini-field">
-                  性别
-                  <select name="selfGender" required>
-                    <option value="">请选择</option>
-                    <option value="男">男</option>
-                    <option value="女">女</option>
-                  </select>
-                </label>
-                <label class="mini-field">
-                  历法
-                  <select name="selfCalendar" required>
-                    <option value="农历" selected>农历</option>
-                    <option value="阳历">阳历</option>
-                  </select>
-                </label>
-                <label class="mini-field">
-                  出生年
-                  <div class="unit-input">
-                    <input name="selfYear" type="number" min="1900" max="2100" required />
-                    <span>年</span>
-                  </div>
-                </label>
-                <label class="mini-field">
-                  出生月
-                  <div class="unit-input">
-                    <input name="selfMonth" type="number" min="1" max="12" required />
-                    <span>月</span>
-                  </div>
-                </label>
-                <label class="mini-field">
-                  出生日
-                  <div class="unit-input">
-                    <input name="selfDay" type="number" min="1" max="31" required />
-                    <span>日</span>
-                  </div>
-                </label>
-              </div>
-              <div class="bazi-grid">
-                <label class="mini-field">
-                  出生时辰
-                  <select name="selfHour" class="hour-select">
-                    <option value="">未知</option>
-                    <option value="子时(23:00-00:59)">子时（23:00-00:59）</option>
-                    <option value="丑时(01:00-02:59)">丑时（01:00-02:59）</option>
-                    <option value="寅时(03:00-04:59)">寅时（03:00-04:59）</option>
-                    <option value="卯时(05:00-06:59)">卯时（05:00-06:59）</option>
-                    <option value="辰时(07:00-08:59)">辰时（07:00-08:59）</option>
-                    <option value="巳时(09:00-10:59)">巳时（09:00-10:59）</option>
-                    <option value="午时(11:00-12:59)">午时（11:00-12:59）</option>
-                    <option value="未时(13:00-14:59)">未时（13:00-14:59）</option>
-                    <option value="申时(15:00-16:59)">申时（15:00-16:59）</option>
-                    <option value="酉时(17:00-18:59)">酉时（17:00-18:59）</option>
-                    <option value="戌时(19:00-20:59)">戌时（19:00-20:59）</option>
-                    <option value="亥时(21:00-22:59)">亥时（21:00-22:59）</option>
-                  </select>
-                </label>
-              </div>
-            </fieldset>
+            <label>
+              本人八字信息
+              <textarea
+                id="selfBazi"
+                name="selfBazi"
+                rows="2"
+                maxlength="500"
+                placeholder="例如：1995年农历八月初三 19点生人，男"
+                required
+              ></textarea>
+            </label>
 
-            <fieldset class="bazi-card">
-              <legend>父亲八字信息</legend>
-              <div class="bazi-grid">
-                <label class="mini-field">
-                  历法
-                  <select name="fatherCalendar" required>
-                    <option value="农历" selected>农历</option>
-                    <option value="阳历">阳历</option>
-                  </select>
-                </label>
-                <label class="mini-field">
-                  出生年
-                  <div class="unit-input">
-                    <input name="fatherYear" type="number" min="1900" max="2100" required />
-                    <span>年</span>
-                  </div>
-                </label>
-                <label class="mini-field">
-                  出生月
-                  <div class="unit-input">
-                    <input name="fatherMonth" type="number" min="1" max="12" required />
-                    <span>月</span>
-                  </div>
-                </label>
-                <label class="mini-field">
-                  出生日
-                  <div class="unit-input">
-                    <input name="fatherDay" type="number" min="1" max="31" required />
-                    <span>日</span>
-                  </div>
-                </label>
-              </div>
-              <div class="bazi-grid">
-                <label class="mini-field">
-                  出生时辰
-                  <select name="fatherHour" class="hour-select">
-                    <option value="">未知</option>
-                    <option value="子时(23:00-00:59)">子时（23:00-00:59）</option>
-                    <option value="丑时(01:00-02:59)">丑时（01:00-02:59）</option>
-                    <option value="寅时(03:00-04:59)">寅时（03:00-04:59）</option>
-                    <option value="卯时(05:00-06:59)">卯时（05:00-06:59）</option>
-                    <option value="辰时(07:00-08:59)">辰时（07:00-08:59）</option>
-                    <option value="巳时(09:00-10:59)">巳时（09:00-10:59）</option>
-                    <option value="午时(11:00-12:59)">午时（11:00-12:59）</option>
-                    <option value="未时(13:00-14:59)">未时（13:00-14:59）</option>
-                    <option value="申时(15:00-16:59)">申时（15:00-16:59）</option>
-                    <option value="酉时(17:00-18:59)">酉时（17:00-18:59）</option>
-                    <option value="戌时(19:00-20:59)">戌时（19:00-20:59）</option>
-                    <option value="亥时(21:00-22:59)">亥时（21:00-22:59）</option>
-                  </select>
-                </label>
-              </div>
-            </fieldset>
+            <label>
+              父亲八字信息
+              <textarea
+                id="fatherBazi"
+                name="fatherBazi"
+                rows="2"
+                maxlength="500"
+                placeholder="例如：1971年农历六月十九"
+                required
+              ></textarea>
+            </label>
 
-            <fieldset class="bazi-card">
-              <legend>母亲八字信息</legend>
-              <div class="bazi-grid">
-                <label class="mini-field">
-                  历法
-                  <select name="motherCalendar" required>
-                    <option value="农历" selected>农历</option>
-                    <option value="阳历">阳历</option>
-                  </select>
-                </label>
-                <label class="mini-field">
-                  出生年
-                  <div class="unit-input">
-                    <input name="motherYear" type="number" min="1900" max="2100" required />
-                    <span>年</span>
-                  </div>
-                </label>
-                <label class="mini-field">
-                  出生月
-                  <div class="unit-input">
-                    <input name="motherMonth" type="number" min="1" max="12" required />
-                    <span>月</span>
-                  </div>
-                </label>
-                <label class="mini-field">
-                  出生日
-                  <div class="unit-input">
-                    <input name="motherDay" type="number" min="1" max="31" required />
-                    <span>日</span>
-                  </div>
-                </label>
-              </div>
-              <div class="bazi-grid">
-                <label class="mini-field">
-                  出生时辰
-                  <select name="motherHour" class="hour-select">
-                    <option value="">未知</option>
-                    <option value="子时(23:00-00:59)">子时（23:00-00:59）</option>
-                    <option value="丑时(01:00-02:59)">丑时（01:00-02:59）</option>
-                    <option value="寅时(03:00-04:59)">寅时（03:00-04:59）</option>
-                    <option value="卯时(05:00-06:59)">卯时（05:00-06:59）</option>
-                    <option value="辰时(07:00-08:59)">辰时（07:00-08:59）</option>
-                    <option value="巳时(09:00-10:59)">巳时（09:00-10:59）</option>
-                    <option value="午时(11:00-12:59)">午时（11:00-12:59）</option>
-                    <option value="未时(13:00-14:59)">未时（13:00-14:59）</option>
-                    <option value="申时(15:00-16:59)">申时（15:00-16:59）</option>
-                    <option value="酉时(17:00-18:59)">酉时（17:00-18:59）</option>
-                    <option value="戌时(19:00-20:59)">戌时（19:00-20:59）</option>
-                    <option value="亥时(21:00-22:59)">亥时（21:00-22:59）</option>
-                  </select>
-                </label>
-              </div>
-            </fieldset>
+            <label>
+              母亲八字信息
+              <textarea
+                id="motherBazi"
+                name="motherBazi"
+                rows="2"
+                maxlength="500"
+                placeholder="例如：1971年农历四月二十七"
+                required
+              ></textarea>
+            </label>
 
             <label>
               兄弟姐妹情况
