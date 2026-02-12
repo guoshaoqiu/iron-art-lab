@@ -262,6 +262,37 @@ form {
   gap: 15px;
 }
 
+.quick-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.secondary-btn {
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  background: #f7f7f7;
+  color: #222;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  box-shadow: none;
+}
+
+.secondary-btn:hover:not(:disabled) {
+  transform: none;
+  background: #efefef;
+  border-color: #bfbfbf;
+  box-shadow: none;
+}
+
+.field-hint {
+  margin: -8px 0 2px;
+  font-size: 0.8rem;
+  color: #707070;
+}
+
 label {
   display: grid;
   gap: 7px;

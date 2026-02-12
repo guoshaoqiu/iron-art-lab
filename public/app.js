@@ -5,6 +5,10 @@ const metaEl = document.getElementById("meta");
 const followupForm = document.getElementById("followup-form");
 const followupInput = document.getElementById("followup-input");
 const followupBtn = document.getElementById("followup-btn");
+const selfBaziInput = document.getElementById("selfBazi");
+const fatherBaziInput = document.getElementById("fatherBazi");
+const motherBaziInput = document.getElementById("motherBazi");
+const fillExampleBtn = document.getElementById("fill-example-btn");
 
 if (window.marked) {
   window.marked.setOptions({ breaks: true });
@@ -191,6 +195,26 @@ function toHistoryPayload(items) {
     .filter((item) => (item.role === "user" || item.role === "assistant") && String(item.content || "").trim())
     .slice(-16)
     .map((item) => ({ role: item.role, content: String(item.content) }));
+}
+
+function setBaziFields(selfValue, fatherValue, motherValue, onlyWhenEmpty = false) {
+  const pairs = [
+    [selfBaziInput, selfValue],
+    [fatherBaziInput, fatherValue],
+    [motherBaziInput, motherValue]
+  ];
+
+  for (const [input, nextValue] of pairs) {
+    if (!input) continue;
+    const current = String(input.value || "").trim();
+    if (onlyWhenEmpty && current) continue;
+    input.value = nextValue;
+    input.dispatchEvent(new Event("input", { bubbles: true }));
+  }
+}
+
+function hasAnyBaziValue() {
+  return [selfBaziInput, fatherBaziInput, motherBaziInput].some((input) => String(input?.value || "").trim());
 }
 
 async function requestAnalyzeStream(payload, handlers = {}) {
@@ -395,6 +419,14 @@ followupForm.addEventListener("submit", async (event) => {
   } finally {
     setBusyState(false);
   }
+});
+
+fillExampleBtn?.addEventListener("click", () => {
+  if (hasAnyBaziValue()) {
+    setBaziFields("", "", "");
+    return;
+  }
+  setBaziFields("1995年农历八月初三 19点，男", "1971年农历六月十九", "1971年农历四月二十七");
 });
 
 updateFollowupState();
