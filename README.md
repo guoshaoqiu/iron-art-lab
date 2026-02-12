@@ -20,6 +20,9 @@
 - DeepSeek 模型调用（模型名可配置）
 - 结果展示 + 免责声明提示
 
+<img width="2560" height="1440" alt="image" src="https://github.com/user-attachments/assets/63c2e032-fa04-4c35-807b-3af5f2780377" />
+
+
 ## 技术栈
 
 - Node.js (>= 18.17)
