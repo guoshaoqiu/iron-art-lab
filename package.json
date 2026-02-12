@@ -1,0 +1,14 @@
+{
+  "name": "iron-art-lab",
+  "version": "0.1.0",
+  "description": "铁板爻画：基于大语言模型的命理分析 Web MVP",
+  "private": false,
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "engines": {
+    "node": ">=18.17.0"
+  }
+}

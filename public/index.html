@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>铁板爻画</title>
+    <link rel="stylesheet" href="/public/styles.css" />
+  </head>
+  <body>
+    <main class="page">
+      <header class="topbar">
+        <div class="brand">Iron Art Lab</div>
+        <div class="badge">AI 命理实验</div>
+      </header>
+
+      <header class="hero">
+        <p class="eyebrow">铁板爻画 · Beta</p>
+        <h1>铁板爻画</h1>
+        <p>输入基础信息，获取 AI 生成的娱乐性命理解读。</p>
+      </header>
+
+      <div class="layout">
+        <section class="panel panel-form">
+          <h2>信息录入</h2>
+          <form id="analyze-form">
+            <label>
+              昵称
+              <input id="nickname" name="nickname" type="text" maxlength="100" required />
+            </label>
+
+            <fieldset class="bazi-card">
+              <legend>本人八字信息</legend>
+              <div class="bazi-grid">
+                <label class="mini-field">
+                  性别
+                  <select name="selfGender" required>
+                    <option value="">请选择</option>
+                    <option value="男">男</option>
+                    <option value="女">女</option>
+                  </select>
+                </label>
+                <label class="mini-field">
+                  历法
+                  <select name="selfCalendar" required>
+                    <option value="农历" selected>农历</option>
+                    <option value="阳历">阳历</option>
+                  </select>
+                </label>
+                <label class="mini-field">
+                  出生年
+                  <div class="unit-input">
+                    <input name="selfYear" type="number" min="1900" max="2100" required />
+                    <span>年</span>
+                  </div>
+                </label>
+                <label class="mini-field">
+                  出生月
+                  <div class="unit-input">
+                    <input name="selfMonth" type="number" min="1" max="12" required />
+                    <span>月</span>
+                  </div>
+                </label>
+                <label class="mini-field">
+                  出生日
+                  <div class="unit-input">
+                    <input name="selfDay" type="number" min="1" max="31" required />
+                    <span>日</span>
+                  </div>
+                </label>
+              </div>
+              <div class="bazi-grid">
+                <label class="mini-field">
+                  出生时辰
+                  <select name="selfHour" class="hour-select">
+                    <option value="">未知</option>
+                    <option value="子时(23:00-00:59)">子时（23:00-00:59）</option>
+                    <option value="丑时(01:00-02:59)">丑时（01:00-02:59）</option>
+                    <option value="寅时(03:00-04:59)">寅时（03:00-04:59）</option>
+                    <option value="卯时(05:00-06:59)">卯时（05:00-06:59）</option>
+                    <option value="辰时(07:00-08:59)">辰时（07:00-08:59）</option>
+                    <option value="巳时(09:00-10:59)">巳时（09:00-10:59）</option>
+                    <option value="午时(11:00-12:59)">午时（11:00-12:59）</option>
+                    <option value="未时(13:00-14:59)">未时（13:00-14:59）</option>
+                    <option value="申时(15:00-16:59)">申时（15:00-16:59）</option>
+                    <option value="酉时(17:00-18:59)">酉时（17:00-18:59）</option>
+                    <option value="戌时(19:00-20:59)">戌时（19:00-20:59）</option>
+                    <option value="亥时(21:00-22:59)">亥时（21:00-22:59）</option>
+                  </select>
+                </label>
+              </div>
+            </fieldset>
+
+            <fieldset class="bazi-card">
+              <legend>父亲八字信息</legend>
+              <div class="bazi-grid">
+                <label class="mini-field">
+                  历法
+                  <select name="fatherCalendar" required>
+                    <option value="农历" selected>农历</option>
+                    <option value="阳历">阳历</option>
+                  </select>
+                </label>
+                <label class="mini-field">
+                  出生年
+                  <div class="unit-input">
+                    <input name="fatherYear" type="number" min="1900" max="2100" required />
+                    <span>年</span>
+                  </div>
+                </label>
+                <label class="mini-field">
+                  出生月
+                  <div class="unit-input">
+                    <input name="fatherMonth" type="number" min="1" max="12" required />
+                    <span>月</span>
+                  </div>
+                </label>
+                <label class="mini-field">
+                  出生日
+                  <div class="unit-input">
+                    <input name="fatherDay" type="number" min="1" max="31" required />
+                    <span>日</span>
+                  </div>
+                </label>
+              </div>
+              <div class="bazi-grid">
+                <label class="mini-field">
+                  出生时辰
+                  <select name="fatherHour" class="hour-select">
+                    <option value="">未知</option>
+                    <option value="子时(23:00-00:59)">子时（23:00-00:59）</option>
+                    <option value="丑时(01:00-02:59)">丑时（01:00-02:59）</option>
+                    <option value="寅时(03:00-04:59)">寅时（03:00-04:59）</option>
+                    <option value="卯时(05:00-06:59)">卯时（05:00-06:59）</option>
+                    <option value="辰时(07:00-08:59)">辰时（07:00-08:59）</option>
+                    <option value="巳时(09:00-10:59)">巳时（09:00-10:59）</option>
+                    <option value="午时(11:00-12:59)">午时（11:00-12:59）</option>
+                    <option value="未时(13:00-14:59)">未时（13:00-14:59）</option>
+                    <option value="申时(15:00-16:59)">申时（15:00-16:59）</option>
+                    <option value="酉时(17:00-18:59)">酉时（17:00-18:59）</option>
+                    <option value="戌时(19:00-20:59)">戌时（19:00-20:59）</option>
+                    <option value="亥时(21:00-22:59)">亥时（21:00-22:59）</option>
+                  </select>
+                </label>
+              </div>
+            </fieldset>
+
+            <fieldset class="bazi-card">
+              <legend>母亲八字信息</legend>
+              <div class="bazi-grid">
+                <label class="mini-field">
+                  历法
+                  <select name="motherCalendar" required>
+                    <option value="农历" selected>农历</option>
+                    <option value="阳历">阳历</option>
+                  </select>
+                </label>
+                <label class="mini-field">
+                  出生年
+                  <div class="unit-input">
+                    <input name="motherYear" type="number" min="1900" max="2100" required />
+                    <span>年</span>
+                  </div>
+                </label>
+                <label class="mini-field">
+                  出生月
+                  <div class="unit-input">
+                    <input name="motherMonth" type="number" min="1" max="12" required />
+                    <span>月</span>
+                  </div>
+                </label>
+                <label class="mini-field">
+                  出生日
+                  <div class="unit-input">
+                    <input name="motherDay" type="number" min="1" max="31" required />
+                    <span>日</span>
+                  </div>
+                </label>
+              </div>
+              <div class="bazi-grid">
+                <label class="mini-field">
+                  出生时辰
+                  <select name="motherHour" class="hour-select">
+                    <option value="">未知</option>
+                    <option value="子时(23:00-00:59)">子时（23:00-00:59）</option>
+                    <option value="丑时(01:00-02:59)">丑时（01:00-02:59）</option>
+                    <option value="寅时(03:00-04:59)">寅时（03:00-04:59）</option>
+                    <option value="卯时(05:00-06:59)">卯时（05:00-06:59）</option>
+                    <option value="辰时(07:00-08:59)">辰时（07:00-08:59）</option>
+                    <option value="巳时(09:00-10:59)">巳时（09:00-10:59）</option>
+                    <option value="午时(11:00-12:59)">午时（11:00-12:59）</option>
+                    <option value="未时(13:00-14:59)">未时（13:00-14:59）</option>
+                    <option value="申时(15:00-16:59)">申时（15:00-16:59）</option>
+                    <option value="酉时(17:00-18:59)">酉时（17:00-18:59）</option>
+                    <option value="戌时(19:00-20:59)">戌时（19:00-20:59）</option>
+                    <option value="亥时(21:00-22:59)">亥时（21:00-22:59）</option>
+                  </select>
+                </label>
+              </div>
+            </fieldset>
+
+            <label>
+              兄弟姐妹情况
+              <textarea id="siblings" name="siblings" rows="2" maxlength="500" required></textarea>
+            </label>
+
+            <label>
+              婚姻状况
+              <select id="maritalStatus" name="maritalStatus" required>
+                <option value="">请选择</option>
+                <option value="未婚">未婚</option>
+                <option value="已婚">已婚</option>
+                <option value="离异">离异</option>
+                <option value="其他">其他</option>
+              </select>
+            </label>
+
+            <label>
+              补充说明（可选）
+              <textarea id="note" name="note" rows="3" maxlength="1000"></textarea>
+            </label>
+
+            <label class="checkbox">
+              <input id="consent" name="consent" type="checkbox" required />
+              我已知晓并同意：以上信息仅用于本次分析，不作为事实依据，结果仅供娱乐参考。
+            </label>
+
+            <button id="submit-btn" type="submit">生成分析</button>
+          </form>
+        </section>
+
+        <section class="panel panel-result">
+          <h2>分析结果</h2>
+          <p id="meta" class="meta"></p>
+          <div id="result" class="result">请先提交信息。</div>
+          <div class="followup">
+            <h3>继续追问</h3>
+            <form id="followup-form">
+              <textarea
+                id="followup-input"
+                name="followup"
+                rows="2"
+                maxlength="800"
+                placeholder="例如：结合刚才的结果，详细说说我未来三年的事业和学业规划。"
+                disabled
+              ></textarea>
+              <button id="followup-btn" type="submit" disabled>发送追问</button>
+            </form>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/dompurify@3.2.6/dist/purify.min.js" defer></script>
+    <script src="/public/app.js" defer></script>
+  </body>
+</html>
