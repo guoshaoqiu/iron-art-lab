@@ -68,8 +68,11 @@ function renderConversation() {
     })
     .join("");
 
+  const atBottom = resultEl.scrollHeight - resultEl.scrollTop - resultEl.clientHeight < 60;
   resultEl.innerHTML = html;
-  resultEl.scrollTop = resultEl.scrollHeight;
+  if (atBottom) {
+    resultEl.scrollTop = resultEl.scrollHeight;
+  }
 }
 
 function hasAssistantReply() {
