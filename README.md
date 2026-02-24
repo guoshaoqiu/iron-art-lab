@@ -20,7 +20,7 @@
 - DeepSeek 模型调用（模型名可配置）
 - 结果展示 + 免责声明提示
 
-<img width="1512" height="945" alt="iron" src="https://github.com/user-attachments/assets/3e35c9eb-e3c8-43de-9997-ab0f4ae795b8" />
+<img width="931" height="940" alt="ironnew" src="https://github.com/user-attachments/assets/41a0bef9-e355-4316-bd98-ef7552d78b0f" />
 
 
 
